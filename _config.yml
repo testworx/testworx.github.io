@@ -1,9 +1,9 @@
 # Site settings
-title: TestWorx
+title: Testworx
 header-img: img/home-bg.jpg
 email: nick@testworx.io
 copyright_name: Nick Oppersdorff
-description: "Write your site description here. It will be used as your sites meta description as well!"
+description: “A technical testing blog covering Selenium, Jmeter, test automation and performance testing.“
 baseurl: ""
 url: "http://www.testworx.io"
 twitter_username: nickOppersdorff
