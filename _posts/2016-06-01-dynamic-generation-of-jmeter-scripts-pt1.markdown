@@ -33,7 +33,8 @@ header-img: "img/post-bg-02.jpg"
 <li>Navigate to the Workbench.</li>
 <li>Select HTTP(S) Test Script Recorder and click Start.</li>
 <li>Click Ok on the Root CA Certificate popup<br>
-<![CA Popup]({{ site.url }}/assets/img/jmeter_test_plans/ca_cert_popup.png)</li>
+<img src="{{  site.url  }}/assets/img/jmeter_test_plans/ca_cert_popup.jpg" style="width:304px;height:228px;" />
+<![CA Popup]({{  site.url  }}/assets/img/jmeter_test_plans/ca_cert_popup.jpg)</li>
 
 
 <h2>Correlation</h2>
