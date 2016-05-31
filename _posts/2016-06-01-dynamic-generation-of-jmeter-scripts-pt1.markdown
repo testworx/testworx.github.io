@@ -2,7 +2,7 @@
 layout:     post
 title:      "Auto Generating JMeter Test Plans Pt. 1"
 subtitle:   "Recording & Correlation"
-date:       2016-06-01 12:00:00
+date:       2016-05-01 12:00:00
 author:     "Nick Oppersdorff"
 header-img: "img/post-bg-02.jpg"
 ---
@@ -25,6 +25,16 @@ header-img: "img/post-bg-02.jpg"
 <h2>Recording</h2>
 <p>Recording browser traffic with JMeter using a <a href="http://jmeter.apache.org/usermanual/component_reference.html#HTTP(S)_Test_Script_Recorder">Proxy Recorder</a> is well documented on the <a href="http://jmeter.apache.org/usermanual/jmeter_proxy_step_by_step.pdf">JMeter website</a> and a sample test plan is available in the the Github repo above in <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/Recording.Template.jmx"><i>src/main/resources/Recording.Template.jmx</i></a> to make the job easier.</p>
 <p>it might not be obvious how to route your automated tests through JMeter so that traffic can be recorded.  To do this we will specify a proxy when creating the browser using Geb.  Note that the same method is used with Selenium.  An example GebConfig file can be found in <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/test/resources/GebConfig.groovy"><i>src/test/resources</i></a> that will send browser traffic through JMeter.</p>
+
+<p>
+<ol>
+<li>clone the <a href="https://github.com/testworx/jmeter-test-plan-generator">project</a> and navigate to the root of the project.</li>
+<li>Run the following command:  <i>gradlew jmGui -Precord</i> - jmeter should now be open.</li>
+<li>Navigate to the Workbench.</li>
+<li>Select HTTP(S) Test Script Recorder and click Start.</li>
+<li>Click Ok on the Root CA Certificate popup<br>
+<![CA Popup]({{ site.url }}/assets/img/jmeter_test_plans/ca_cert_popup.png)</li>
+
 
 <h2>Correlation</h2>
 <p>Once the script has been recorded, you need to go through and identify any session specific values for correlation.  <a href="http://jmeter.apache.org/usermanual/component_reference.html#Regular_Expression_Extractor">JMeter Regular Expression Extractors</a> are ideal for pulling this data from a response and making it available for future requests.</p>
