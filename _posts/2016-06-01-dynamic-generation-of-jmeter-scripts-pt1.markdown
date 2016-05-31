@@ -2,7 +2,7 @@
 layout:     post
 title:      "Auto Generating JMeter Test Plans Pt. 1"
 subtitle:   "Recording & Correlation"
-date:       2016-05-01 12:00:00
+date:       2016-06-01 12:00:00
 author:     "Nick Oppersdorff"
 header-img: "img/post-bg-02.jpg"
 ---
@@ -27,18 +27,21 @@ header-img: "img/post-bg-02.jpg"
 <p>it might not be obvious how to route your automated tests through JMeter so that traffic can be recorded.  To do this we will specify a proxy when creating the browser using Geb.  Note that the same method is used with Selenium.  An example GebConfig file can be found in <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/test/resources/GebConfig.groovy"><i>src/test/resources</i></a> that will send browser traffic through JMeter.</p>
 
 <p>
-<ol>
-<li>clone the <a href="https://github.com/testworx/jmeter-test-plan-generator">project</a> and navigate to the root of the project.</li>
-<li>Run the following command:  <i>gradlew jmGui -Precord</i> - jmeter should now be open.</li>
-<li>Navigate to the Workbench.</li>
-<li>Select HTTP(S) Test Script Recorder and click Start.</li>
-<li>Click Ok on the Root CA Certificate popup<br>
-<img src="{{  site.url  }}/assets/img/jmeter_test_plans/ca_cert_popup.jpg" style="width:304px;height:228px;" />
-<![CA Popup]({{  site.url  }}/assets/img/jmeter_test_plans/ca_cert_popup.jpg)</li>
+  <ol>
+    <li>clone the <a href="https://github.com/testworx/jmeter-test-plan-generator">project</a> and navigate to the root of the project on the command line.</li>
+    <li>Run the following command:  <i>gradlew jmGui -Precord</i> - jmeter should now be open.</li>
+    <li>Navigate to the Workbench.</li>
+    <li>Select HTTP(S) Test Script Recorder and click Start.
+    <img src="/assets/img/jmeter_test_plans/proxy_recorder.png" style="width:650px" /></li></li>
+    <li>Click Ok on the Root CA Certificate popup<br>
+    <img src="/assets/img/jmeter_test_plans/ca_cert_popup.png" style="width:580px" /></li>
+    <li>You are now ready to start recording traffic from an automated test.</li>
+    <li>Open another command prompt and navigate to the root of the project folder again.</li>
+    <li>Run <i>gradlew firefoxJmeterTest</i> - Firefox should open and run the demo test against Google.</li>
+    <li>Once the test has finished, switch to JMeter and view the transactions that have been recorded under the Recording Controller and click Save.
+    <img src="/assets/img/jmeter_test_plans/recorded_transactions.png" style="width:650px" /></li>
+    <li>We have now recorded our initial test plan ready for correlation and post processing</li>
+  </ol>
+</p>
 
-
-<h2>Correlation</h2>
-<p>Once the script has been recorded, you need to go through and identify any session specific values for correlation.  <a href="http://jmeter.apache.org/usermanual/component_reference.html#Regular_Expression_Extractor">JMeter Regular Expression Extractors</a> are ideal for pulling this data from a response and making it available for future requests.</p>
-<p>I tend to have two JMeter session open at this point, one with the recorded script in <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/Recording.Template.jmx"><i>src/main/resources/Recording.Template.jmx</i></a>, and one with <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/TestPlan.Template.jmx"><i>src/main/resources/TestPlan.Template.jmx</i></a> open.  As items for correlation are identified (values that look like random sequences of letters and numbers are a good bet!), find the first response that returns that value in the View Results Tree Listener under the Workbench (in the Recording Test Plan).  Construct a regular expression that uniquely identifies that value in the response and put it into a new Regular Expression Extractor in the root of the test plan within TestPlan.Template.jmx.  Putting it in the root of the test plan means that it will apply to all responses.</p>
-
-<p>Tune in for Part 2 where we discuss the structure of the XML underlying the JMeter test plan that has been recorded as well as programmatically parsing it into a new test plan that uses the values we correlated earlier.</P>
+<p>Tune in for Part 2 where we discuss correlation and post processing.</P>
