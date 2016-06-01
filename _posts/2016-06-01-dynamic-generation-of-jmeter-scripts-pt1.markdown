@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Auto Generating JMeter Test Plans Pt. 1"
-subtitle:   "Recording & Correlation"
+subtitle:   "Recording a test plan using Geb"
 date:       2016-06-01 12:00:00
 author:     "Nick Oppersdorff"
 header-img: "img/post-bg-02.jpg"
