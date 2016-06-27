@@ -21,7 +21,7 @@ header-img: "img/post-bg-02.jpg"
 <ol>
   <li>Correlate the URL using a regular expression extractor</li>
   <li>Add this extractor to the <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/TestPlan.Template.jmx"><i>TestPlan.Template.jmx</i></a></li>
-  <li>Write a groovy script that will perform correlation using this extractor automatically on test plans we record in the future.</li>
+  <li>Write a groovy script that will perform correlation using this extractor automatically on test plans we record in the future.  This will form a blog post on it's own.</li>
 </ol>
 
 <h2>Correlate the URL using a regular expression extractor.</h2>
