@@ -32,7 +32,7 @@ header-img: "img/post-bg-02.jpg"
     <li>Run the following command:  <i>gradlew jmGui -Precord</i> - jmeter should now be open.</li>
     <li>Navigate to the Workbench.</li>
     <li>Select HTTP(S) Test Script Recorder and click Start.
-    <img src="/assets/img/jmeter_test_plans/proxy_recorder.png" style="width:650px" /></li></li>
+    <img src="/assets/img/jmeter_test_plans/proxy_recorder.png" style="width:650px" /></li>
     <li>Click Ok on the Root CA Certificate popup<br>
     <img src="/assets/img/jmeter_test_plans/ca_cert_popup.png" style="width:580px" /></li>
     <li>You are now ready to start recording traffic from an automated test.</li>

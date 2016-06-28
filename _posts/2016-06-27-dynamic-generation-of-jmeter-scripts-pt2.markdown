@@ -7,7 +7,7 @@ author:     "Nick Oppersdorff"
 header-img: "img/post-bg-02.jpg"
 ---
 
-<p>This is a continuation of <a href="{% post_url 2016-06-01-dynamic-generation-of-jmeter-scripts-pt1 %}">part 1</a> where we recorded a JMeter test plan using Geb to drive the application under test.  We are now ready to do some initial correlation and post processing using Groovy.</p>
+<p>This is a continuation of <a href="{% post_url 2016-06-01-dynamic-generation-of-jmeter-scripts-pt1 %}">part 1</a> where we recorded a JMeter test plan using Geb to drive the application under test.  We are now ready to do some initial correlation.  I will have to leave post procesing for a 3rd post as I haven't had time to get the content together yet.</p>
 
 <h2>Git Repository</h2>
 <p>A git repository is available containing all the files used in this blog post:  <a href="https://github.com/testworx/jmeter-test-plan-generator">here</a></p>
@@ -21,7 +21,7 @@ header-img: "img/post-bg-02.jpg"
 <ol>
   <li>Correlate the URL using a regular expression extractor</li>
   <li>Add this extractor to the <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/TestPlan.Template.jmx"><i>TestPlan.Template.jmx</i></a></li>
-  <li>Write a groovy script that will perform correlation using this extractor automatically on test plans we record in the future.  This will form a blog post on it's own.</li>
+  <li>Write a groovy script that will perform correlation using this extractor automatically on test plans we record in the future.</li>
 </ol>
 
 <h2>Correlate the URL using a regular expression extractor.</h2>
