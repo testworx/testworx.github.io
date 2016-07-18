@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="“A technical testing blog covering Selenium, Jmeter, test automation and performance testing.“">
+
+    <title>Auto Generating JMeter Test Plans Pt. 2 - Testworx</title>
+
+    <link rel="canonical" href="http://www.testworx.io/2016/06/27/dynamic-generation-of-jmeter-scripts-pt2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link type="application/atom+xml" rel="alternate" href="http://www.testworx.io/feed.xml" title="Testworx" />
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Testworx</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+				
+                <li>
+                    <a href="/about/">About</a>
+                </li>
+				
+                
+				
+                <li>
+                    <a href="/contact/">Contact</a>
+                </li>
+				
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-02.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Auto Generating JMeter Test Plans Pt. 2</h1>
+                    
+                    <h2 class="subheading">Correlation</h2>
+                    
+                    <span class="meta">Posted by Nick Oppersdorff on June 27, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>This is a continuation of <a href="/2016/06/01/dynamic-generation-of-jmeter-scripts-pt1/">part 1</a> where we recorded a JMeter test plan using Geb to drive the application under test.  We are now ready to do some initial correlation.  I will have to leave post procesing for a 3rd post as I haven't had time to get the content together yet.</p>
+
+<h2>Git Repository</h2>
+<p>A git repository is available containing all the files used in this blog post:  <a href="https://github.com/testworx/jmeter-test-plan-generator">here</a></p>
+
+<h2>Correlation</h2>
+<p>Once the script has been recorded, you need to go through and identify any session specific values for correlation.  <a href="http://jmeter.apache.org/usermanual/component_reference.html#Regular_Expression_Extractor">JMeter Regular Expression Extractors</a> are ideal for pulling this data from a response and making it available for future requests.</p>
+<p>I tend to have two JMeter sessions open at this point, one with the recorded script in <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/Recording.Template.jmx"><i>src/main/resources/Recording.Template.jmx</i></a>, and one with <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/TestPlan.Template.jmx"><i>src/main/resources/TestPlan.Template.jmx</i></a> open.  As items for correlation are identified, find the first response that returns that value in the View Results Tree Listener under the Workbench (in the Recording Test Plan).  Construct a regular expression that uniquely identifies that value in the response and put it into a new Regular Expression Extractor in the root of the test plan within TestPlan.Template.jmx.  Putting it in the root of the test plan means that it will apply to all responses.</p>
+
+<p>In the case of the test plan recorded earlier, we did a search for Wikipedia then clicked on the first result which took us to Wikipedia.org which has been hard coded in the recorded test plan.  For the purposes of this post, lets say we wanted to dynamically determine what URL the first result would take us to, and then browse to that URL.  We would need to do the following:
+
+<ol>
+  <li>Correlate the URL using a regular expression extractor</li>
+  <li>Add this extractor to the <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/TestPlan.Template.jmx"><i>TestPlan.Template.jmx</i></a></li>
+  <li>Write a groovy script that will perform correlation using this extractor automatically on test plans we record in the future.</li>
+</ol>
+
+<h2>Correlate the URL using a regular expression extractor.</h2>
+<p>When we perform a Google search we click one of the result links and go to the relevant URL.  To simulate this using JMeter we need to identify the request that gives us this URL and correlate it so we can pull it out dynamically.</p>
+<p>In the screenshot below we can see that the URL is given to us in the response to request 51.  Note that this request number is likely to change when you record the test yourself.<br />
+<img src="/assets/img/jmeter_test_plans/correlation_1.png" style="width:580px" /></p>
+<p>Once we know which response gives us our result URL we can construct a regular expression to pull out what we want.  In this instance, the following gives us what we need: '<i>x22([a-z]+):\\\/\\\/(.+?)\\\/\\\\x22</i>'.
+I don't claim to be an expert at regexes so I am sure there is a more elegant verion but this works (at the time of writing).
+<img src="/assets/img/jmeter_test_plans/correlation_2.png" style="width:580px" /></p>
+
+<h2>Add a Regular Expression Extractor to the Test Plan Template</h2>
+<p>Now we have identified the regular expression that will pull out the information we need, we need to add this to our <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/TestPlan.Template.jmx"><i>test plan template</i></a>.</p>
+<p>The following screenshot shows the configuration that should be used for the Regular Expression Extractor.<img src="/assets/img/jmeter_test_plans/regex_1.png" style="width:580px" /></p>
+<p>It is worth briefly explaining the different parameters we have used in this post processor.
+<ul>
+  <li><b>Reference Name</b> - this is the name by which we will reference the extracted value.</li>
+  <li><b>Regular Expression</b> - this is the expression used to extract the data we want to use.</li>
+  <li><b>Temple</b> - In the expression we are using, there are actually two parts:  <b>([a-z]+)</b> &amp; <b>(.+?)</b>.  The template allows us to define which bits we use and in which order.  In this case we are only going to use the second part.</li>
+  <li><b>Match No</b> - If there are multiple matches, we can specify which match we would like to use.  In this case we are only going to use the first match.</li>
+  <li><b>Default Value</b> - This allows us to define the default value to use if we don't get a match for a particular response.  Given the we have put this post processor in the root of our test plan, it will apply to <b>all</b> responses. As such it is highly likely that at some point we won't get a match.  To mitigate this, I am referencing the parameter recursively.  Once it is initialised, it will stay intialised.  In this instance any other default value would be bad as we might find a match in one response, then overwrite it in the next with a default value because we have not found another match.</li>
+</ul>
+</p>
+<p>Part 3 will tie all of this together.  We will cover writing a Groovy script to process the recorded JMeter test plan and replace the original search result URL with the value pulled out using the Regular Expression Extractor.  At that point we should hopefully be in a position to change our automated UI test to perform an entirely different search and record  a new performance test script with (almost!) no manual involvement.</p>
+</p>
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/06/01/dynamic-generation-of-jmeter-scripts-pt1/" data-toggle="tooltip" data-placement="top" title="Auto Generating JMeter Test Plans Pt. 1">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/nickOppersdorff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="https://github.com/testWorx">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="mailto:nick@testworx.io">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Nick Oppersdorff 2016</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+</body>
+
+</html>
