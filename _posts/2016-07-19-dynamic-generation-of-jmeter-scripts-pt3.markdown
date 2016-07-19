@@ -95,6 +95,6 @@ header-img: "img/post-bg-02.jpg"
   </ol>
 </p>
 
-<h2>Summary<h2>
+<h2>Summary</h2>
 <p>Using a Google search example is rather basic, but when you are doing this on something much more complex e.g. policy management system, large customer ordering system etc, you can quickly generate meaningful performance tests from automated functional tests.  The small upfront investment in writing a script to perform the correlation and creating some test plan templates will rapidly increase your ability to generate JMeter Test Plans quickly.</p>
 <p>In terms of maintaining the test scripts you generate to handle changes in the application, don't bother.  Simply maintain your automated tests and just record new JMeter Test Plans when necessary!</p>
