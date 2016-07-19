@@ -24,7 +24,7 @@ header-img: "img/post-bg-02.jpg"
 
 <h2>Recording</h2>
 <p>Recording browser traffic with JMeter using a <a href="http://jmeter.apache.org/usermanual/component_reference.html#HTTP(S)_Test_Script_Recorder">Proxy Recorder</a> is well documented on the <a href="http://jmeter.apache.org/usermanual/jmeter_proxy_step_by_step.pdf">JMeter website</a> and a sample test plan is available in the the Github repo above in <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/main/resources/Recording.Template.jmx"><i>src/main/resources/Recording.Template.jmx</i></a> to make the job easier.</p>
-<p>it might not be obvious how to route your automated tests through JMeter so that traffic can be recorded.  To do this we will specify a proxy when creating the browser using Geb.  Note that the same method is used with Selenium.  An example GebConfig file can be found in <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/test/resources/GebConfig.groovy"><i>src/test/resources</i></a> that will send browser traffic through JMeter.</p>
+<p>It might not be obvious how to route your automated tests through JMeter so that traffic can be recorded.  To do this we will specify a proxy when creating the browser using Geb.  Note that the same method is used with Selenium.  An example GebConfig file can be found in <a href="https://github.com/testworx/jmeter-test-plan-generator/blob/master/src/test/resources/GebConfig.groovy"><i>src/test/resources</i></a> that will send browser traffic through JMeter.</p>
 
 <p>
   <ol>
