@@ -1,5 +1,6 @@
 ---
 layout:     post
+comments: true
 title:      "Auto Generating JMeter Test Plans Pt. 2"
 subtitle:   "Correlation"
 date:       2016-06-27 00:00:00

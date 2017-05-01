@@ -1,5 +1,6 @@
 ---
 layout:     post
+comments: true
 title:      "Auto Generating JMeter Test Plans Pt. 1"
 subtitle:   "Recording a test plan using Geb"
 date:       2016-06-01 12:00:00

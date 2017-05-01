@@ -1,5 +1,6 @@
 ---
 layout:     post
+comments: true
 title:      "Auto Generating JMeter Test Plans Pt. 3"
 subtitle:   "Post Processing Using Groovy"
 date:       2016-07-19 12:00:00

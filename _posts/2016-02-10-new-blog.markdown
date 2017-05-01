@@ -1,5 +1,6 @@
 ---
 layout:     post
+comments: true
 title:      "My new blog."
 subtitle:   "So what's it all about? and other ramblings..."
 date:       2016-02-10 12:00:00
