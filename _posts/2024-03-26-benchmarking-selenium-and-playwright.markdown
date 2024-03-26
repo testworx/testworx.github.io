@@ -2,6 +2,7 @@
 layout:     post
 comments: true
 title:      "Benchmarking Selenium and Playwright"
+subtitle:   
 date:       2024-03-26 00:00:00
 author:     "Nick Oppersdorff"
 header-img: "img/post-bg-02.jpg"
