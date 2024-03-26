@@ -31,22 +31,22 @@ See the README for instructions on how to run the tests.
 
 ### Results
 #### Browser Lifecycle
-![browser-lifecycle.png](/img/2024/march/benchmarks-pt-1/browser-lifecycle.png)
+![browser-lifecycle.png](/assets/img/2024/march/benchmarks-pt-1/browser-lifecycle.png)
 
 #### Navigate to URL
-![browser-navigation.png](/img/2024/march/benchmarks-pt-1/browser-navigation.png)
+![browser-navigation.png](/assets/img/2024/march/benchmarks-pt-1/browser-navigation.png)
 
 #### Find Element on the Page
-![find-element.png](/img/2024/march/benchmarks-pt-1/find-element.png)
+![find-element.png](/assets/img/2024/march/benchmarks-pt-1/find-element.png)
 
 #### Click on an Element
-![click-element.png](/img/2024/march/benchmarks-pt-1/click-element.png)
+![click-element.png](/assets/img/2024/march/benchmarks-pt-1/click-element.png)
 
 #### Type Text into an Element
-![type-in-element.png](/img/2024/march/benchmarks-pt-1/type-in-element.png)
+![type-in-element.png](/assets/img/2024/march/benchmarks-pt-1/type-in-element.png)
 
 #### Test Duration
-![test-duration.png](/img/2024/march/benchmarks-pt-1/test-duration.png)
+![test-duration.png](/assets/img/2024/march/benchmarks-pt-1/test-duration.png)
 
 ### Observations
 Opening a browser and navigation are significantly faster in Playwright.  The difference in these to actions seems to 
