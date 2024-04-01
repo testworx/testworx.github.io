@@ -3,9 +3,9 @@ layout:     post
 comments: true
 title:      "Benchmarking Selenium and Playwright"
 subtitle:   "Improving browser startup/close times in Selenium"
-date:       2024-03-26 00:00:00
+date:       2024-04-01 00:00:00
 author:     "Nick Oppersdorff"
-header-img: "img/post-bg-02.jpg"
+header-img: "img/2024/april/grafana.png"
 ---
 
 ### Introduction
