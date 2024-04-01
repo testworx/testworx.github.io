@@ -5,7 +5,7 @@ title:      "Benchmarking Selenium and Playwright Pt. 2"
 subtitle:   "Improving browser startup/close times in Selenium"
 date:       2024-04-01 00:00:00
 author:     "Nick Oppersdorff"
-header-img: "img/2024/april/grafana.png"
+header-img: "img/grafana.png"
 ---
 
 ### Introduction
