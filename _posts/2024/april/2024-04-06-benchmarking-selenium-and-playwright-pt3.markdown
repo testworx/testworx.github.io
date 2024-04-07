@@ -3,7 +3,7 @@ layout:     post
 comments: true
 title:      "Benchmarking Selenium and Playwright Pt. 3"
 subtitle:   "The impact of running Chrome in headless mode"
-date:       2024-04-01 00:00:00
+date:       2024-04-06 00:00:00
 author:     "Nick Oppersdorff"
 header-img: "img/grafana.png"
 ---
