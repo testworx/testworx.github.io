@@ -65,6 +65,11 @@ Compared to Playwright, we can say the following:
 The test used to measure these differences was very short and simple but it gives a sense of some of the relative differences in performance between the two tools.
 I think a longer test, with more backend processing is likely to reduce the overall gap, but all things being equal, Playwright is still the faster tool out of the box.
 
+This is a fairly large subject to investigate and I am not sure whether to do another blog post at the moment.  
+Things I think could be worth investigating further in the future are:
+- Changing the page loading strategy
+- Increasing the polling rate for the DOM
+
 #### Final Thoughts
 This wasn't really a review of Playwright.  It was an effort to investigate performance differences with Selenium and to try and reduce the gap.
 
