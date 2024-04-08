@@ -39,14 +39,16 @@ I extended the **Open()** method to add another config option
 #### Avg. Time to Open Browser
 ![avg-time-to-open-browser.png](/assets/img/2024/april/benchmarks-pt-3/avg-time-to-open-browser.png)
 
-By reusing the ChromeDriver service, the time to open a browser has been reduced to approximately 500ms.
+By reusing the ChromeDriver service, the time to open a browser was reduced by 30%. Starting in headless mode as well, reduced startup time by a further 30%.
 
-For comparison, starting up a browser using a default ChromeDriver service takes approximately 1.2 seconds.
+With very little effort we were able to reduce startup time by almost 60%!
 
-Playwright is still faster at 250ms, but the gap can be narrowed quite easily.
+Playwright is still 2x faster at 146ms.
 
 #### Avg. Time to Click element
 ![avg-time-to-click-element.png](/assets/img/2024/april/benchmarks-pt-3/avg-time-to-click-element.png)
+
+As in the other test runs, Playwright is fastest.  Compared to a default Chrome instance, Headless mode reduces the time to click an element by ~10%.
 
 #### Avg. Test Runtime
 ![avg-test-runtime.png](/assets/img/2024/april/benchmarks-pt-3/avg-test-runtime.png)
@@ -54,7 +56,7 @@ Playwright is still faster at 250ms, but the gap can be narrowed quite easily.
 ### Conclusion
 Compared to using Chrome with a default Chromedriver, we can say the following:
 - Starting Chrome in headless mode, using an existing ChromeDriver service, reduces the time to open a browser by approximately 50%.
-- Element interactions are approximately 9% faster.
+- Element interactions are approximately 10% faster.
 - Overall test runtime is approximately 20% faster.
 
 Compared to Playwright, we can say the following:
