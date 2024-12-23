@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant Sender
+    participant Courier
+    participant SortingFacility
+    participant DeliveryAgent
+    participant Recipient
+
+    Sender->>Courier: Hands over parcel or schedules pickup
+    Courier->>SortingFacility: Transports parcel to sorting facility
+    SortingFacility->>DeliveryAgent: Sends parcel for delivery
+    DeliveryAgent->>Recipient: Attempts delivery
+    alt Delivery successful
+        Recipient->>DeliveryAgent: Confirms receipt
+        DeliveryAgent->>Courier: Marks delivery as successful
+    else Delivery unsuccessful
+        DeliveryAgent->>Recipient: Leaves notice with options
+        Recipient->>DeliveryAgent: Schedules re-delivery or pickup
+        DeliveryAgent->>Recipient: Completes re-delivery/pickup
+        opt Parcel unclaimed
+            DeliveryAgent->>Sender: Returns parcel to sender
+        end
+    end
