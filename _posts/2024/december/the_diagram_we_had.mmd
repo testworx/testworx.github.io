@@ -1,0 +1,5 @@
+graph TD
+    A[Sender] --> B[Third Party: Processes Transaction]
+    B --> C[Webhook Service: Receives Webhook with Status]
+    C --> D[Webhook Service: Publishes Event]
+    D --> E[Transaction Service: Processes Event]

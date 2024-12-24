@@ -1,0 +1,7 @@
+graph TD
+    A[Sender Hands Over Parcel] --> B[Parcel Sorted and Transported]
+    B --> C{Attempted Delivery}
+    C -- Yes --> D[Delivery Successful]
+    C -- No --> E[Missed Delivery Process]
+    E -- Re-delivery/Pickup --> F[Final Delivery]
+    E -- Unclaimed --> G[Return to Sender]
