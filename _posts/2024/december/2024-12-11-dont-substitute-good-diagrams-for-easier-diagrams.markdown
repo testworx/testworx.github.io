@@ -11,7 +11,7 @@ header-img: "img/post-bg-02.jpg"
 ### Introduction
 A picture speaks a thousand words, or so the saying goes...
 
-Diagrams are an integral part of system design.  Whilst wordy requirements can hide a lot of ambiguity, and mask an author's understanding, or lack of, a diagram holds that understanding up to the light.  "This is how I think it looks".  These are the states an entity will pass through.  This is the logical flow as we process an entity.  This is the sequence of interactions between the components in our system as the entity is processed.  It's all there, in black and white (and maybe some colour for the creatives).  
+Diagrams are an integral part of system design.  Whilst wordy requirements can hide a lot of ambiguity, and mask an author's understanding, or lack of, a diagram holds that understanding up to the light;  "this is how I think it looks",  "these are the states an entity will pass through",  "this is the logical flow as we process an entity".  "this is the sequence of interactions between the components".  It's all there, in black and white (and maybe some colour for the creatives).  
 
 Different diagrams serve different purposes and require different levels of detail and understanding.  Our choice of diagram can have a material impact on the quality of the software that is developed, and create oppotunities for missing functionality and serious defects.
 
