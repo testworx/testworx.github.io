@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant Adapter Service
+    participant ThirdParty
+    participant WebhookService
+    participant TransactionService
+    participant DownstreamService
+
+    Adapter Service->>ThirdParty: Sends transaction request
+    ThirdParty->>WebhookService: Sends webhook with transaction status
+    WebhookService->>TransactionService: Publishes event
+    TransactionService->>DownstreamService: Calls downstream service
+    DownstreamService-->>TransactionService: Acknowledges processing
+    TransactionService-->>WebhookService: Confirms event processed
+    WebhookService-->>ThirdParty: Acknowledges webhook receipt

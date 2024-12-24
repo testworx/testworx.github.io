@@ -40,4 +40,21 @@ This diagram gives us a much better understanding of how our process works in te
 Delving down to this level of detail helps us answer the questions that our flow diagram couldn't.  If we understand this, it is less likely that the parcel will remain underlivered.
 
 #### Why?
-The diagrams offer us different levels of detail when it comes to specifiying a process.  We have used a simple idea to communicate how one diagram might not offer us the detail we need.
+Different diagrams offer us different levels of detail when it comes to specifiying a process.  We have used a simple idea to communicate how one diagram might not offer us the detail we need, whilst another type of diagram forces us to identify this detail.
+
+Too often, I see teams start building systems once the design is complete.  The problem is that the design is often inadequate, but due to the presence of some flow diagrams, has the veneer of technical solution, ready for implementation.
+
+In a real life project, years ago, this lack of design detail was the root cause of a production incident.
+
+After sending a transaction to a third party, that third party would send a webhook call confirming they had processed the transaction and provide a staus.  Our Webhook Service would publish an event which would be processed by the Transaction Service, which should have then called a downstream service.  The problem was that downstream service was never called.  It was never called, because that integration had never been part of the technical design.
+
+This is the diagram we had:
+![the_diagram_we_had.png](/assets/img/2024/december/the_diagram_we_had.png)
+
+This is the diagram we needed:
+![the_diagram_we_needed.png](/assets/img/2024/december/the_diagram_we_needed.png)
+
+This would have created a demand for better understanding, and after a few review cycles would have undoubtedly highlighted the gaps in our understanding, most likely preventing the production issue.
+
+#### Conclusions
+As technical QAs, we often get caught up in fairly mundane debates around tooling (Selenium vs Playwright anyone?), or arguing over testing vs checking, but the reality is there are far more productive things we can debate and push for.  Decent diagrams should be one of them, and if they aren't being done, as technical QAs we could even provide examples as a way to build a consensus towards what better design could look like.
