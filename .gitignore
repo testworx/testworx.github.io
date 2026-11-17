@@ -1,5 +1,6 @@
 _site
 node_modules
-Gemfile.lock
 .idea/*
 vendor/*
+.DS_Store
+rafts/
